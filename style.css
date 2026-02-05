@@ -1,0 +1,438 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --surface-hover: #334155;
+  --primary: #6366f1;
+  --primary-hover: #818cf8;
+  --success: #22c55e;
+  --error: #ef4444;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border: #334155;
+  --radius: 12px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+#app {
+  width: 100%;
+  max-width: 700px;
+}
+
+/* Screens */
+.screen {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.screen.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Home Screen */
+h1 {
+  font-size: 2.4rem;
+  text-align: center;
+  margin-top: 30px;
+  background: linear-gradient(135deg, var(--primary), #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  margin: 8px 0 24px;
+  font-size: 1.05rem;
+}
+
+.stats-bar {
+  text-align: center;
+  margin-bottom: 28px;
+  font-size: 1.1rem;
+  color: var(--primary-hover);
+  font-weight: 600;
+}
+
+/* Exercise Grid */
+.exercise-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.exercise-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  color: var(--text);
+  font-family: inherit;
+}
+
+.exercise-card:hover {
+  background: var(--surface-hover);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.card-icon {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--primary-hover);
+  margin-bottom: 4px;
+}
+
+.card-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.card-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* Screen Header */
+.screen-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.screen-header h2 {
+  font-size: 1.3rem;
+}
+
+.back-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+
+.back-btn:hover {
+  background: var(--surface-hover);
+}
+
+.timer {
+  background: var(--primary);
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  min-width: 60px;
+  text-align: center;
+}
+
+.timer.warning {
+  background: var(--error);
+  animation: pulse 0.5s infinite alternate;
+}
+
+@keyframes pulse {
+  from { opacity: 1; }
+  to { opacity: 0.6; }
+}
+
+/* Exercise Area */
+.exercise-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 0;
+}
+
+.score-display {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary-hover);
+}
+
+.instruction {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+/* Problem Display */
+.problem-text {
+  font-size: 3rem;
+  font-weight: 700;
+  padding: 20px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Input & Buttons */
+.answer-input {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  color: var(--text);
+  padding: 14px 20px;
+  border-radius: var(--radius);
+  font-size: 1.2rem;
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.answer-input:focus {
+  border-color: var(--primary);
+}
+
+.answer-input::placeholder {
+  color: var(--text-muted);
+}
+
+.submit-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 40px;
+  border-radius: var(--radius);
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+
+.submit-btn:hover {
+  background: var(--primary-hover);
+}
+
+.start-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: var(--radius);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+  margin-top: 8px;
+}
+
+.start-btn:hover {
+  background: var(--primary-hover);
+}
+
+.hint-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 10px 20px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.hint-btn:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.btn-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Feedback */
+.feedback {
+  font-size: 1.05rem;
+  font-weight: 600;
+  min-height: 28px;
+  transition: all 0.2s;
+}
+
+.feedback.correct {
+  color: var(--success);
+}
+
+.feedback.wrong {
+  color: var(--error);
+}
+
+/* Sequence Display (Pattern) */
+.sequence-display {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.seq-num {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.seq-num.missing {
+  border-color: var(--primary);
+  color: var(--primary-hover);
+  font-size: 1.6rem;
+}
+
+/* Scramble Display */
+.scramble-display {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: 8px;
+  color: var(--primary-hover);
+  padding: 16px;
+}
+
+.hint {
+  color: var(--text-muted);
+  font-style: italic;
+  min-height: 24px;
+}
+
+/* Memory Display */
+.memory-display {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-height: 64px;
+  align-items: center;
+}
+
+.mem-num {
+  background: var(--primary);
+  color: white;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  transition: all 0.3s;
+}
+
+.mem-num.hidden {
+  background: var(--surface);
+  color: var(--surface);
+}
+
+/* Stroop Display */
+.stroop-display {
+  font-size: 3.5rem;
+  font-weight: 800;
+  padding: 20px;
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+.stroop-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.stroop-btn {
+  padding: 14px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+  text-transform: capitalize;
+}
+
+.stroop-btn:hover {
+  background: var(--surface-hover);
+  border-color: var(--primary);
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .exercise-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .problem-text {
+    font-size: 2.2rem;
+  }
+
+  .scramble-display {
+    font-size: 2rem;
+    letter-spacing: 5px;
+  }
+
+  .stroop-display {
+    font-size: 2.5rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+}

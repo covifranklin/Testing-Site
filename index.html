@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brain Trainer - Thinking Exercises</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Home Screen -->
+    <div id="home-screen" class="screen active">
+      <h1>Brain Trainer</h1>
+      <p class="subtitle">Sharpen your mind with quick thinking exercises</p>
+      <div class="stats-bar">
+        <span id="total-score">Total Score: 0</span>
+      </div>
+      <div class="exercise-grid">
+        <button class="exercise-card" data-exercise="math">
+          <span class="card-icon">+&minus;&times;&divide;</span>
+          <span class="card-title">Math Quick Fire</span>
+          <span class="card-desc">Solve arithmetic problems against the clock</span>
+        </button>
+        <button class="exercise-card" data-exercise="pattern">
+          <span class="card-icon">1 2 ? 4</span>
+          <span class="card-title">Pattern Recognition</span>
+          <span class="card-desc">Find the missing number in a sequence</span>
+        </button>
+        <button class="exercise-card" data-exercise="scramble">
+          <span class="card-icon">ABC&rarr;CAB</span>
+          <span class="card-title">Word Scramble</span>
+          <span class="card-desc">Unscramble letters to form words</span>
+        </button>
+        <button class="exercise-card" data-exercise="memory">
+          <span class="card-icon">7 3 ? 1</span>
+          <span class="card-title">Memory Challenge</span>
+          <span class="card-desc">Remember and recall number sequences</span>
+        </button>
+        <button class="exercise-card" data-exercise="stroop">
+          <span class="card-icon" style="color:#e74c3c;">BLUE</span>
+          <span class="card-title">Stroop Test</span>
+          <span class="card-desc">Name the color, ignore the word</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Math Quick Fire -->
+    <div id="math-screen" class="screen">
+      <div class="screen-header">
+        <button class="back-btn" data-target="home-screen">&larr; Back</button>
+        <h2>Math Quick Fire</h2>
+        <div class="timer" id="math-timer">30s</div>
+      </div>
+      <div class="exercise-area">
+        <div class="score-display">Score: <span id="math-score">0</span></div>
+        <div id="math-problem" class="problem-text"></div>
+        <input type="number" id="math-answer" class="answer-input" placeholder="Your answer" autocomplete="off">
+        <button id="math-submit" class="submit-btn">Submit</button>
+        <div id="math-feedback" class="feedback"></div>
+        <button id="math-start" class="start-btn">Start Round (30s)</button>
+      </div>
+    </div>
+
+    <!-- Pattern Recognition -->
+    <div id="pattern-screen" class="screen">
+      <div class="screen-header">
+        <button class="back-btn" data-target="home-screen">&larr; Back</button>
+        <h2>Pattern Recognition</h2>
+      </div>
+      <div class="exercise-area">
+        <div class="score-display">Score: <span id="pattern-score">0</span></div>
+        <p class="instruction">Find the missing number in the sequence:</p>
+        <div id="pattern-sequence" class="sequence-display"></div>
+        <input type="number" id="pattern-answer" class="answer-input" placeholder="Missing number" autocomplete="off">
+        <button id="pattern-submit" class="submit-btn">Submit</button>
+        <div id="pattern-feedback" class="feedback"></div>
+        <button id="pattern-next" class="start-btn">Next Puzzle</button>
+      </div>
+    </div>
+
+    <!-- Word Scramble -->
+    <div id="scramble-screen" class="screen">
+      <div class="screen-header">
+        <button class="back-btn" data-target="home-screen">&larr; Back</button>
+        <h2>Word Scramble</h2>
+      </div>
+      <div class="exercise-area">
+        <div class="score-display">Score: <span id="scramble-score">0</span></div>
+        <p class="instruction">Unscramble this word:</p>
+        <div id="scramble-word" class="scramble-display"></div>
+        <p id="scramble-hint" class="hint"></p>
+        <input type="text" id="scramble-answer" class="answer-input" placeholder="Your word" autocomplete="off">
+        <button id="scramble-submit" class="submit-btn">Submit</button>
+        <div id="scramble-feedback" class="feedback"></div>
+        <div class="btn-group">
+          <button id="scramble-hint-btn" class="hint-btn">Show Hint</button>
+          <button id="scramble-next" class="start-btn">Next Word</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Memory Challenge -->
+    <div id="memory-screen" class="screen">
+      <div class="screen-header">
+        <button class="back-btn" data-target="home-screen">&larr; Back</button>
+        <h2>Memory Challenge</h2>
+      </div>
+      <div class="exercise-area">
+        <div class="score-display">Score: <span id="memory-score">0</span> | Level: <span id="memory-level">3</span></div>
+        <p class="instruction" id="memory-instruction">Memorize the numbers, then recall them.</p>
+        <div id="memory-display" class="memory-display"></div>
+        <input type="text" id="memory-answer" class="answer-input" placeholder="Enter the numbers" autocomplete="off" style="display:none;">
+        <button id="memory-submit" class="submit-btn" style="display:none;">Submit</button>
+        <div id="memory-feedback" class="feedback"></div>
+        <button id="memory-start" class="start-btn">Show Numbers</button>
+      </div>
+    </div>
+
+    <!-- Stroop Test -->
+    <div id="stroop-screen" class="screen">
+      <div class="screen-header">
+        <button class="back-btn" data-target="home-screen">&larr; Back</button>
+        <h2>Stroop Test</h2>
+        <div class="timer" id="stroop-timer">30s</div>
+      </div>
+      <div class="exercise-area">
+        <div class="score-display">Score: <span id="stroop-score">0</span></div>
+        <p class="instruction">What COLOR is the text displayed in?</p>
+        <div id="stroop-word" class="stroop-display"></div>
+        <div id="stroop-options" class="stroop-options"></div>
+        <div id="stroop-feedback" class="feedback"></div>
+        <button id="stroop-start" class="start-btn">Start Round (30s)</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
