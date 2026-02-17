@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Chore Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>My Daily Chores</h1>
+      <p class="date" id="today-date"></p>
+    </header>
+
+    <div class="add-chore">
+      <input type="text" id="chore-input" placeholder="Add a new chore..." autocomplete="off">
+      <select id="chore-priority">
+        <option value="low">Low</option>
+        <option value="medium" selected>Medium</option>
+        <option value="high">High</option>
+      </select>
+      <button id="add-btn">Add</button>
+    </div>
+
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    <p class="progress-text" id="progress-text">0 / 0 completed</p>
+
+    <ul class="chore-list" id="chore-list"></ul>
+
+    <div class="actions">
+      <button id="clear-completed-btn" class="secondary-btn">Clear Completed</button>
+      <button id="reset-day-btn" class="danger-btn">Reset Day</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
